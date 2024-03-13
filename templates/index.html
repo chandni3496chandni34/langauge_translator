@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Language Translator</title>
+</head>
+<body>
+    <h1>Language Translator</h1>
+    <form method="post">
+        <!-- Microphone Input Button -->
+        <button type="submit" name="microphone">Speak</button>
+        
+        <label for="input_text">Or Enter Text:</label><br>
+        <textarea id="input_text" name="input_text" rows="4" cols="50"></textarea><br>
+        
+        <label for="language_choice">Select Language:</label><br>
+        <select id="language_choice" name="language_choice">
+            {% for language in languages %}
+            <option value="{{ language }}">{{ language }}</option>
+            {% endfor %}
+        </select><br>
+
+        <button type="submit">Translate</button>
+    </form>
+
+    {% if translated_text %}
+    <hr>
+    <h2>Translated Text:</h2>
+    <p>{{ translated_text }}</p>
+    {% endif %}
+</body>
+</html>
