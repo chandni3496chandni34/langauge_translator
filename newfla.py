@@ -67,10 +67,13 @@ class LanguageTranslatorApp:
         return translation.text
 
     def speak(self, text, lang='en'):
-        tts = gTTS(text=text, lang=lang)
-        tts.save("translated_voice.mp3")
-        playsound("translated_voice.mp3")
-        os.remove("translated_voice.mp3")
+        if text:
+            tts = gTTS(text=text, lang=lang)
+            tts.save("translated_voice.mp3")
+            playsound("translated_voice.mp3")
+            os.remove("translated_voice.mp3")
+        else:
+            print("no textvto speak")
     def listen_microphone(self):
         with sr.Microphone() as source:
             print("Speak:")
